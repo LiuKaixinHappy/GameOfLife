@@ -13,23 +13,33 @@ public class GameOfLifeTest {
     @Test
     public void should_000010000_if_000101010() throws IOException {
         StringBuilder initFrames = new StringBuilder();
-        Files.lines(Paths.get("init_frames.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
-        MyFrame myFrame = new MyFrame(3, 3);
+        Files.lines(Paths.get("2.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
+        MyFrame myFrame = new MyFrame();
         myFrame.setFrame(initFrames.toString());
         myFrame.changeStatus();
         assertEquals("000010010", myFrame.getResult());
     }
 
     @Test
+    public void should_0_if_000101010() throws IOException {
+        StringBuilder initFrames = new StringBuilder();
+        Files.lines(Paths.get("1.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
+        MyFrame myFrame = new MyFrame();
+        myFrame.setFrame(initFrames.toString());
+        myFrame.changeStatus();
+        assertEquals("0110011010010110", myFrame.getResult());
+    }
+
+    @Test
     public void should_get_1_if_one_has_1_live_neighbors() {
-        MyFrame myFrame = new MyFrame(3, 3);
+        MyFrame myFrame = new MyFrame();
         myFrame.setFrame("000|101|010");
         assertEquals(1, myFrame.getLiveNeighborsNumOf(0, 0), 0);
     }
 
     @Test
     public void should_get_3_if_one_has_3_live_neighbors() {
-        MyFrame myFrame = new MyFrame(3, 3);
+        MyFrame myFrame = new MyFrame();
         myFrame.setFrame("000|101|010");
         assertEquals(3, myFrame.getLiveNeighborsNumOf(1, 1), 0);
     }

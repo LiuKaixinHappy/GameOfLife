@@ -27,9 +27,6 @@ public class MyFrame {
             if (isInBorder(positionX, positionY) && LIVE.equals(frames[positionX][positionY])) {
                 liveNumSum++;
             }
-            if (liveNumSum >= 3) {
-                return liveNumSum;
-            }
         }
         return liveNumSum;
     }
@@ -75,8 +72,8 @@ public class MyFrame {
             String line = lines[row];
             String[] cols = line.split("");
             for (int col = 0; col < cols.length; col++) {
-                this.frames[col][row] = cols[col];
-                this.answerFrames[col][row] = cols[col];
+                this.frames[row][col] = cols[col];
+                this.answerFrames[row][col] = cols[col];
             }
         }
     }
@@ -96,6 +93,7 @@ public class MyFrame {
             }
         }
         frames = answerFrames;
+        answerFrames = frames;
     }
 
     public void changeStatus(int x,int y) {
