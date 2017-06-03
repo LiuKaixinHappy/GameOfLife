@@ -31,17 +31,6 @@ public class MyFrame {
         return liveNumSum;
     }
 
-    public void dfs(int posx, int posy) {
-        for (int i = 0; i < 8; i++) {
-            int positionX = posx + border[i][0];
-            int positionY = posy + border[i][1];
-            if (isInBorder(positionX, positionY)) {
-                changeStatus(positionX, positionY);
-                dfs(positionX, positionY);
-            }
-        }
-    }
-
     public void setLive(int indexOfWidth, int indexOfHeight) {
         this.answerFrames[indexOfWidth][indexOfHeight] = LIVE;
     }
@@ -88,14 +77,6 @@ public class MyFrame {
         }
         frames = answerFrames;
         answerFrames = frames;
-    }
-
-    public void changeStatus(int x, int y) {
-        if (getLiveNeighborsNumOf(x, y) == 3) {
-            setLive(x, y);
-        } else if (getLiveNeighborsNumOf(x, y) != 2) {
-            setDead(x, y);
-        }
     }
 
     public String[][] getAnswerFrame() {
