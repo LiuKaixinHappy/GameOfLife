@@ -74,4 +74,16 @@ public class Frame {
     public void setDead(int indexOfWidth, int indexOfHeight) {
         this.answerFrames[indexOfWidth][indexOfHeight] = DEAD;
     }
+
+    public void changeStatus() {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                if (getLiveNeighborsNumOf(i, j) == 3) {
+                    setLive(i, j);
+                } else if (getLiveNeighborsNumOf(i, j) != 2) {
+                    setDead(i, j);
+                }
+            }
+        }
+    }
 }

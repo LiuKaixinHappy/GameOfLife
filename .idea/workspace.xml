@@ -40,8 +40,8 @@
       <file leaf-file-name="Frame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1180">
-              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="1157">
+              <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
               <folding>
                 <element signature="e#1531#1532#0" expanded="true" />
                 <element signature="e#1600#1601#0" expanded="true" />
@@ -55,8 +55,8 @@
       <file leaf-file-name="GameOfLifeTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/GameOfLifeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="15" column="56" lean-forward="false" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+            <state relative-caret-position="490">
+              <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -346,9 +346,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/GameOfLife.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Frame.java" />
-        <option value="$PROJECT_DIR$/src/test/java/GameOfLifeTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/JFrameTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/GameOfLifeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Frame.java" />
       </list>
     </option>
   </component>
@@ -958,7 +958,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1496453406326</updated>
-      <workItem from="1496453410494" duration="9978000" />
+      <workItem from="1496453410494" duration="10265000" />
     </task>
     <task id="LOCAL-00001" summary="新增 调用框架及3个格子为生的测试案例">
       <created>1496456666435</created>
@@ -974,7 +974,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496460152137</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改 读取从文件读取">
+      <created>1496464194758</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1496464194758</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1010,7 +1017,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9978000" />
+    <option name="totallyTimeSpent" value="10265000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1050,7 +1057,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增 调用框架及3个格子为生的测试案例" />
     <MESSAGE value="新增 获得某个细胞领域中生存细胞的个数及其测试函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增 获得某个细胞领域中生存细胞的个数及其测试函数" />
+    <MESSAGE value="修改 读取从文件读取" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改 读取从文件读取" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1063,30 +1071,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameOfLife.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding>
-            <element signature="e#126#127#0" expanded="true" />
-            <element signature="e#171#172#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1180">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="e#1531#1532#0" expanded="true" />
-            <element signature="e#1600#1601#0" expanded="true" />
-            <element signature="e#2378#2379#0" expanded="true" />
-            <element signature="e#2447#2448#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/JFrameTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2668">
@@ -1105,10 +1089,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1157">
+          <caret line="81" column="14" lean-forward="true" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+          <folding>
+            <element signature="e#1531#1532#0" expanded="true" />
+            <element signature="e#1600#1601#0" expanded="true" />
+            <element signature="e#2378#2379#0" expanded="true" />
+            <element signature="e#2447#2448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameOfLife.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding>
+            <element signature="e#126#127#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/GameOfLifeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="15" column="56" lean-forward="false" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
+        <state relative-caret-position="490">
+          <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

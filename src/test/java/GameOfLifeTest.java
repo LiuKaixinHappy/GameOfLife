@@ -16,17 +16,7 @@ public class GameOfLifeTest {
         Files.lines(Paths.get("init_frames.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
         Frame frame = new Frame(3, 3);
         frame.setFrame(initFrames.toString());
-
-        for (int i = 0; i < frame.getWidth(); i++) {
-            for (int j = 0; j < frame.getHeight(); j++) {
-                if (frame.getLiveNeighborsNumOf(i, j) == 3) {
-                    frame.setLive(i, j);
-                } else if (frame.getLiveNeighborsNumOf(i, j) != 2) {
-                    frame.setDead(i, j);
-                }
-            }
-        }
-
+        frame.changeStatus();
         assertEquals("000010010", frame.getResult());
     }
 
