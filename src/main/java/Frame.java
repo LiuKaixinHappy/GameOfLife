@@ -7,8 +7,8 @@ public class Frame {
     private final String[][] frames;
     private String[][] answerFrames;
     private static final int BORDER_NUM = 8;
-    private static final String LIVE = "1";
-    private static final String DEAD = "0";
+    public static final String LIVE = "1";
+    public static final String DEAD = "0";
     private final int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
     public Frame(int width, int height) {
@@ -85,5 +85,13 @@ public class Frame {
                 }
             }
         }
+    }
+
+    public String[][] getFrames() {
+        return frames;
+    }
+
+    public String[][] getAnswerFrame() {
+        return answerFrames;
     }
 }
