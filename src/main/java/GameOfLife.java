@@ -3,35 +3,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * Created by Roman on 2017/6/3.
  */
 public class GameOfLife extends JFrame implements ActionListener {
 
-    private JPanel allPanel = new JPanel(new GridLayout(1,4));
+    private JPanel allPanel = new JPanel(new GridLayout(1,5));
 
     private JButton startButton = new JButton("开始");
-    private JLabel fileNameLabel = new JLabel("文件名");
-    private JLabel sleepTimeLabel = new JLabel("间隔");
+    private JLabel fileNameLabel = new JLabel("文件名", JLabel.CENTER);
+    private JLabel sleepTimeLabel = new JLabel("间隔", JLabel.CENTER);
 
     private JTextField sleepTimeText = new JTextField();
     private JTextField fileNameText = new JTextField();
 
     public GameOfLife() {
-        setSize(800, 200);
+        setSize(900, 150);
 
-        allPanel.setSize(600, 200);
-        allPanel.setAlignmentX(100);
-        allPanel.setAlignmentY(100);
-
-        fileNameText.setSize(200, 100);
-        sleepTimeText.setSize(200, 100);
-
+        startButton.setContentAreaFilled(false);
+        allPanel.setBorder(BorderFactory.createEmptyBorder(30,10,30,10));
         allPanel.add(fileNameLabel);
         allPanel.add(fileNameText);
 
