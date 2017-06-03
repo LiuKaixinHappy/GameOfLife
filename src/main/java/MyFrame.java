@@ -1,7 +1,7 @@
 /**
  * Created by Roman on 2017/6/3.
  */
-public class Frame {
+public class MyFrame {
     private int height = 3;
     private int width = 3;
     private final String[][] frames;
@@ -11,7 +11,7 @@ public class Frame {
     public static final String DEAD = "0";
     private final int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
-    public Frame(int width, int height) {
+    public MyFrame(int width, int height) {
         this.width = width;
         this.height = height;
         this.frames = new String[width][height];

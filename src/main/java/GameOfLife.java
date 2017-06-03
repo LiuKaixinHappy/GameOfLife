@@ -14,12 +14,12 @@ import java.nio.file.Paths;
 public class GameOfLife extends JFrame implements ActionListener {
 
     private JPanel allPanel = new JPanel(new BorderLayout());
-    private LeftPanel leftPanel;
+//    private LeftPanel leftPanel;
     private JPanel rightPanel = new JPanel(new GridLayout(4, 1));
 
     private JButton randomButton = new JButton("生成细胞");
-    private JButton startButton = new JButton("开  始");
-    private JButton stopButton = new JButton("结  束");
+    private JButton startButton = new JButton("开始");
+    private JButton stopButton = new JButton("结束");
 
     private JTextField frameSizeText = new JTextField();
     private int width;
@@ -35,10 +35,12 @@ public class GameOfLife extends JFrame implements ActionListener {
         rightPanel.add(stopButton);
 
         allPanel.add(rightPanel, BorderLayout.EAST);
-        allPanel.add(new LeftPanel(this), BorderLayout.CENTER);
+//        allPanel.add(new LeftPanel(this), BorderLayout.CENTER);
         add(allPanel);
 
         randomButton.addActionListener(this);
+        startButton.addActionListener(this);
+        stopButton.addActionListener(this);
     }
 
 
@@ -46,13 +48,16 @@ public class GameOfLife extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "生成细胞":
+                break;
+            case "开始":
                 width = Integer.valueOf(frameSizeText.getText());
                 height = Integer.valueOf(frameSizeText.getText());
+                DrawCellFrame newFrame=new DrawCellFrame(width, height);
+                newFrame.setSize(500,500);
+                newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                newFrame.setVisible(true);
                 break;
-            case "开  始":
-
-                break;
-            case "结  束":
+            case "结束":
                 break;
         }
     }
