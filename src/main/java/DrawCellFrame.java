@@ -15,17 +15,17 @@ public class DrawCellFrame extends JFrame {
     private String[][] frames;
     private int sleepTime;
 
-    public DrawCellFrame(int frameWidth, int frameHeight, int sleepTime) {
+    public DrawCellFrame(String fileName, int sleepTime) {
         StringBuilder initFrames = new StringBuilder();
         try {
-            Files.lines(Paths.get("init_frames.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
+            Files.lines(Paths.get(fileName), StandardCharsets.UTF_8).forEach(initFrames::append);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        width = frameWidth;
-        height = frameHeight;
-        myFrame = new MyFrame(width, height);
+        myFrame = new MyFrame();
         myFrame.setFrame(initFrames.toString());
+        width = myFrame.getWidth();
+        height = myFrame.getHeight();
         this.sleepTime = sleepTime;
     }
 
@@ -36,7 +36,7 @@ public class DrawCellFrame extends JFrame {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (frames[i][j].equals(MyFrame.DEAD)) {
-                    g.setColor(Color.GREEN);
+                    g.setColor(Color.BLACK);
                 } else {
                     g.setColor(Color.RED);
                 }

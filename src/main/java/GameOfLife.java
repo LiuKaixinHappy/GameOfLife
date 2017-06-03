@@ -13,66 +13,51 @@ import java.nio.file.Paths;
  */
 public class GameOfLife extends JFrame implements ActionListener {
 
-    private JPanel allPanel = new JPanel(new BorderLayout());
-//    private LeftPanel leftPanel;
-    private JPanel rightPanel = new JPanel(new GridLayout(4, 1));
+    private JPanel allPanel = new JPanel(new GridLayout(1,4));
 
-    private JButton randomButton = new JButton("生成细胞");
     private JButton startButton = new JButton("开始");
-    private JButton stopButton = new JButton("结束");
+    private JLabel fileNameLabel = new JLabel("文件名");
+    private JLabel sleepTimeLabel = new JLabel("间隔");
 
-    private JTextField frameSizeText = new JTextField();
     private JTextField sleepTimeText = new JTextField();
-    private int width;
-    private int height;
-    private int sleepTime;
+    private JTextField fileNameText = new JTextField();
 
     public GameOfLife() {
-        setSize(800, 500);
+        setSize(800, 200);
 
-        rightPanel.setSize(200, 500);
-        rightPanel.add(frameSizeText);
-        rightPanel.add(sleepTimeText);
-        frameSizeText.setText("大小");
-        rightPanel.add(randomButton);
-        rightPanel.add(startButton);
-        rightPanel.add(stopButton);
+        allPanel.setSize(600, 200);
+        allPanel.setAlignmentX(100);
+        allPanel.setAlignmentY(100);
 
-        allPanel.add(rightPanel, BorderLayout.EAST);
-//        allPanel.add(new LeftPanel(this), BorderLayout.CENTER);
+        fileNameText.setSize(200, 100);
+        sleepTimeText.setSize(200, 100);
+
+        allPanel.add(fileNameLabel);
+        allPanel.add(fileNameText);
+
+        allPanel.add(sleepTimeLabel);
+        allPanel.add(sleepTimeText);
+        allPanel.add(startButton);
+
         add(allPanel);
 
-        randomButton.addActionListener(this);
         startButton.addActionListener(this);
-        stopButton.addActionListener(this);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "生成细胞":
-                break;
             case "开始":
-                width = Integer.valueOf(frameSizeText.getText());
-                height = Integer.valueOf(frameSizeText.getText());
-                sleepTime = Integer.valueOf(sleepTimeText.getText());
-                DrawCellFrame newFrame=new DrawCellFrame(width, height, sleepTime);
-                newFrame.setSize(500,500);
+                int sleepTime = Integer.valueOf(sleepTimeText.getText());
+                String fileName = fileNameText.getText() + ".txt";
+                DrawCellFrame newFrame=new DrawCellFrame(fileName, sleepTime);
+                newFrame.setSize(1000,1000);
                 newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 newFrame.setVisible(true);
-                break;
-            case "结束":
                 break;
         }
     }
 
 
-    public int getFrameWidth() {
-        return width;
-    }
-
-    public int getFrameHeight() {
-        return height;
-    }
 }

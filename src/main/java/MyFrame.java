@@ -2,21 +2,14 @@
  * Created by Roman on 2017/6/3.
  */
 public class MyFrame {
-    private int height = 3;
-    private int width = 3;
+    private int height;
+    private int width;
     private String[][] frames;
     private String[][] answerFrames;
     private static final int BORDER_NUM = 8;
     public static final String LIVE = "1";
     public static final String DEAD = "0";
     private final int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
-
-    public MyFrame(int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.frames = new String[width][height];
-        this.answerFrames = new String[width][height];
-    }
 
     public int getWidth() {
         return this.width;
@@ -74,12 +67,16 @@ public class MyFrame {
 
     public void setFrame(String frame) {
         String[] lines = frame.split("\\|");
+        width = lines.length;
+        height = lines[0].length();
+        this.frames = new String[width][height];
+        this.answerFrames = new String[width][height];
         for (int row = 0; row < lines.length; row++) {
             String line = lines[row];
             String[] cols = line.split("");
             for (int col = 0; col < cols.length; col++) {
-                this.frames[row][col] = cols[col];
-                this.answerFrames[row][col] = cols[col];
+                this.frames[col][row] = cols[col];
+                this.answerFrames[col][row] = cols[col];
             }
         }
     }
