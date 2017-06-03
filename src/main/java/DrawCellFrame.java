@@ -13,8 +13,9 @@ public class DrawCellFrame extends JFrame {
     private int width;
     private int height;
     private String[][] frames;
+    private int sleepTime;
 
-    public DrawCellFrame(int frameWidth, int frameHeight) {
+    public DrawCellFrame(int frameWidth, int frameHeight, int sleepTime) {
         StringBuilder initFrames = new StringBuilder();
         try {
             Files.lines(Paths.get("init_frames.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
@@ -25,6 +26,7 @@ public class DrawCellFrame extends JFrame {
         height = frameHeight;
         myFrame = new MyFrame(width, height);
         myFrame.setFrame(initFrames.toString());
+        this.sleepTime = sleepTime;
     }
 
     @Override
@@ -39,11 +41,11 @@ public class DrawCellFrame extends JFrame {
                     g.setColor(Color.RED);
                 }
 
-                g.fillRect(i * 100, j * 100, 100, 100);
+                g.fillRect(100 + i * 100, 100+j * 100, 100, 100);
             }
         }
         try {
-            Thread.sleep(100);
+            Thread.sleep(sleepTime);
             repaint();
         } catch (InterruptedException e) {
             e.printStackTrace();

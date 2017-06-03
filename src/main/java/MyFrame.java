@@ -4,7 +4,7 @@
 public class MyFrame {
     private int height = 3;
     private int width = 3;
-    private final String[][] frames;
+    private String[][] frames;
     private String[][] answerFrames;
     private static final int BORDER_NUM = 8;
     public static final String LIVE = "1";
@@ -39,6 +39,19 @@ public class MyFrame {
             }
         }
         return liveNumSum;
+    }
+
+    public void dfs(int posx,int posy){
+        for(int i=0;i<8;i++)
+        {
+            int positionX = posx + border[i][0];
+            int positionY = posy + border[i][1];
+            if (isInBorder(positionX, positionY))
+            {
+                changeStatus(positionX,positionY);
+                dfs(positionX,positionY);
+            }
+        }
     }
 
     private boolean isInBorder(int positionX, int positionY) {
@@ -84,6 +97,15 @@ public class MyFrame {
                     setDead(i, j);
                 }
             }
+        }
+        frames = answerFrames;
+    }
+
+    public void changeStatus(int x,int y) {
+        if (getLiveNeighborsNumOf(x, y) == 3) {
+            setLive(x, y);
+        } else if (getLiveNeighborsNumOf(x, y) != 2) {
+            setDead(x, y);
         }
     }
 

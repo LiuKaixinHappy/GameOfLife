@@ -22,14 +22,18 @@ public class GameOfLife extends JFrame implements ActionListener {
     private JButton stopButton = new JButton("结束");
 
     private JTextField frameSizeText = new JTextField();
+    private JTextField sleepTimeText = new JTextField();
     private int width;
     private int height;
+    private int sleepTime;
 
     public GameOfLife() {
         setSize(800, 500);
 
         rightPanel.setSize(200, 500);
         rightPanel.add(frameSizeText);
+        rightPanel.add(sleepTimeText);
+        frameSizeText.setText("大小");
         rightPanel.add(randomButton);
         rightPanel.add(startButton);
         rightPanel.add(stopButton);
@@ -52,7 +56,8 @@ public class GameOfLife extends JFrame implements ActionListener {
             case "开始":
                 width = Integer.valueOf(frameSizeText.getText());
                 height = Integer.valueOf(frameSizeText.getText());
-                DrawCellFrame newFrame=new DrawCellFrame(width, height);
+                sleepTime = Integer.valueOf(sleepTimeText.getText());
+                DrawCellFrame newFrame=new DrawCellFrame(width, height, sleepTime);
                 newFrame.setSize(500,500);
                 newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 newFrame.setVisible(true);
