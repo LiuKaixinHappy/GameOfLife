@@ -21,7 +21,7 @@ public class GameOfLife extends JFrame implements ActionListener {
         startButton.setContentAreaFilled(false);
 
         JPanel allPanel = new JPanel(new GridLayout(1, 5));
-        allPanel.setBorder(BorderFactory.createEmptyBorder(30,10,30,10));
+        allPanel.setBorder(BorderFactory.createEmptyBorder(30, 10, 30, 10));
 
         JLabel fileNameLabel = new JLabel("文件名", JLabel.CENTER);
         allPanel.add(fileNameLabel);
@@ -40,18 +40,29 @@ public class GameOfLife extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "开始":
-                showStatus();
+                if (fileNameText.getText().isEmpty() || sleepTimeText.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(GameOfLife.this,
+                            "不能为空!", "错误", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    showStatus();
+                }
                 break;
         }
     }
 
     private void showStatus() {
-        int sleepTime = Integer.valueOf(sleepTimeText.getText());
-        String fileName = fileNameText.getText() + ".txt";
-        DrawCellFrame newFrame=new DrawCellFrame(fileName, sleepTime);
-        newFrame.setSize(1000,1000);
-        newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        newFrame.setVisible(true);
+        int sleepTime = 0;
+        try {
+            sleepTime = Integer.valueOf(sleepTimeText.getText());
+            String fileName = fileNameText.getText() + ".txt";
+            DrawCellFrame newFrame = new DrawCellFrame(fileName, sleepTime);
+            newFrame.setSize(1000, 1000);
+            newFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            newFrame.setVisible(true);
+        } catch (RuntimeException e) {
+            JOptionPane.showMessageDialog(GameOfLife.this,
+                    "输入非法!", "错误", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 
