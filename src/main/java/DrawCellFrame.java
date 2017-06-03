@@ -41,7 +41,7 @@ public class DrawCellFrame extends JFrame {
                     g.setColor(Color.RED);
                 }
 
-                g.fillRect(100 + j * 100, 100 + i * 100, 100, 100);
+                g.fillRect(100 + j * 800 / width, 100 + i * 800 / height, 100, 100);
             }
         }
         try {
