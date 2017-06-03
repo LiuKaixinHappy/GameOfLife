@@ -9,13 +9,15 @@ import java.nio.file.Paths;
  * Created by Roman on 2017/6/3.
  */
 public class DrawCellFrame extends JFrame {
+    private final int SIZE = 800;
+    private final int ALIGNMENT = 100;
     private MyFrame myFrame;
     private int width;
     private int height;
-    private String[][] frames;
     private int sleepTime;
 
     public DrawCellFrame(String fileName, int sleepTime) {
+        setTitle("State");
         StringBuilder initFrames = new StringBuilder();
         try {
             Files.lines(Paths.get(fileName), StandardCharsets.UTF_8).forEach(initFrames::append);
@@ -32,16 +34,20 @@ public class DrawCellFrame extends JFrame {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        frames = myFrame.getAnswerFrame();
+        String[][] frames = myFrame.getAnswerFrame();
+        int dx = SIZE / width;
+        int dy = SIZE / height;
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (frames[i][j].equals(MyFrame.DEAD)) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(Color.WHITE);
                 } else {
-                    g.setColor(Color.RED);
+                    g.setColor(Color.BLUE);
                 }
 
-                g.fillRect(100 + j * 800 / width, 100 + i * 800 / height, 100, 100);
+                g.fillRect(ALIGNMENT + j * dx, ALIGNMENT + i * dy, ALIGNMENT, ALIGNMENT);
+                g.setColor(Color.black);
+                g.drawRect(ALIGNMENT + j * dx, ALIGNMENT + i * dy, ALIGNMENT, ALIGNMENT);
             }
         }
         try {

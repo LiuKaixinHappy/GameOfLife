@@ -7,8 +7,8 @@ public class MyFrame {
     private String[][] frames;
     private String[][] answerFrames;
     private static final int BORDER_NUM = 8;
-    public static final String LIVE = "1";
-    public static final String DEAD = "0";
+    private static final String LIVE = "1";
+    static final String DEAD = "0";
     private final int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
     public int getWidth() {
@@ -31,21 +31,15 @@ public class MyFrame {
         return liveNumSum;
     }
 
-    public void dfs(int posx,int posy){
-        for(int i=0;i<8;i++)
-        {
+    public void dfs(int posx, int posy) {
+        for (int i = 0; i < 8; i++) {
             int positionX = posx + border[i][0];
             int positionY = posy + border[i][1];
-            if (isInBorder(positionX, positionY))
-            {
-                changeStatus(positionX,positionY);
-                dfs(positionX,positionY);
+            if (isInBorder(positionX, positionY)) {
+                changeStatus(positionX, positionY);
+                dfs(positionX, positionY);
             }
         }
-    }
-
-    private boolean isInBorder(int positionX, int positionY) {
-        return (positionX >= 0 && positionX < width) && (positionY >= 0 && positionY < height);
     }
 
     public void setLive(int indexOfWidth, int indexOfHeight) {
@@ -68,10 +62,10 @@ public class MyFrame {
         height = lines[0].length();
         this.frames = new String[width][height];
         this.answerFrames = new String[width][height];
-        for (int row = 0; row < lines.length; row++) {
+        for (int row = 0; row < width; row++) {
             String line = lines[row];
             String[] cols = line.split("");
-            for (int col = 0; col < cols.length; col++) {
+            for (int col = 0; col < height; col++) {
                 this.frames[row][col] = cols[col];
                 this.answerFrames[row][col] = cols[col];
             }
@@ -96,7 +90,7 @@ public class MyFrame {
         answerFrames = frames;
     }
 
-    public void changeStatus(int x,int y) {
+    public void changeStatus(int x, int y) {
         if (getLiveNeighborsNumOf(x, y) == 3) {
             setLive(x, y);
         } else if (getLiveNeighborsNumOf(x, y) != 2) {
@@ -104,11 +98,11 @@ public class MyFrame {
         }
     }
 
-    public String[][] getFrames() {
-        return frames;
-    }
-
     public String[][] getAnswerFrame() {
         return answerFrames;
+    }
+
+    private boolean isInBorder(int positionX, int positionY) {
+        return (positionX >= 0 && positionX < width) && (positionY >= 0 && positionY < height);
     }
 }

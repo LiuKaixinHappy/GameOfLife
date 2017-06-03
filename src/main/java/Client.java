@@ -5,9 +5,8 @@ import javax.swing.*;
  */
 public class Client {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         GameOfLife gameOfLife = new GameOfLife();
-        gameOfLife.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameOfLife.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gameOfLife.setVisible(true);
     }
 }
