@@ -1,23 +1,33 @@
 import org.junit.Test;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.Assert.assertEquals;
 /**
  * Created by Roman on 2017/6/3.
  */
 public class GameOfLifeTest {
     @Test
-    public void should_live_if_has_3_neighbors() {
-
+    public void should_000010000_if_000101010() throws IOException {
+        StringBuilder initFrames = new StringBuilder();
+        Files.lines(Paths.get("init_frames.txt"), StandardCharsets.UTF_8).forEach(initFrames::append);
         Frame frame = new Frame(3, 3);
-        frame.setFrame("000|101|010");
+        frame.setFrame(initFrames.toString());
+
         for (int i = 0; i < frame.getWidth(); i++) {
             for (int j = 0; j < frame.getHeight(); j++) {
-                if (frame.getLiveNeighborsNumOf(i, j) >= 3) {
+                if (frame.getLiveNeighborsNumOf(i, j) == 3) {
                     frame.setLive(i, j);
+                } else if (frame.getLiveNeighborsNumOf(i, j) != 2) {
+                    frame.setDead(i, j);
                 }
             }
         }
 
-        assertEquals("000111010", frame.getResult());
+        assertEquals("000010010", frame.getResult());
     }
 
     @Test
@@ -33,4 +43,5 @@ public class GameOfLifeTest {
         frame.setFrame("000|101|010");
         assertEquals(3, frame.getLiveNeighborsNumOf(1, 1), 0);
     }
+
 }

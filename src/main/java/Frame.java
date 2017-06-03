@@ -4,16 +4,18 @@
 public class Frame {
     private int height = 3;
     private int width = 3;
-    private String[][] frames;
+    private final String[][] frames;
+    private String[][] answerFrames;
     private static final int BORDER_NUM = 8;
     private static final String LIVE = "1";
     private static final String DEAD = "0";
-    private int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    private final int[][] border = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
     public Frame(int width, int height) {
         this.width = width;
         this.height = height;
         this.frames = new String[width][height];
+        this.answerFrames = new String[width][height];
     }
 
     public int getWidth() {
@@ -44,14 +46,14 @@ public class Frame {
     }
 
     public void setLive(int indexOfWidth, int indexOfHeight) {
-        this.frames[indexOfWidth][indexOfHeight] = LIVE;
+        this.answerFrames[indexOfWidth][indexOfHeight] = LIVE;
     }
 
     public String getResult() {
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                answer.append(this.frames[i][j]);
+                answer.append(this.answerFrames[i][j]);
             }
         }
         return answer.toString();
@@ -64,7 +66,12 @@ public class Frame {
             String[] cols = line.split("");
             for (int col = 0; col < cols.length; col++) {
                 this.frames[row][col] = cols[col];
+                this.answerFrames[row][col] = cols[col];
             }
         }
+    }
+
+    public void setDead(int indexOfWidth, int indexOfHeight) {
+        this.answerFrames[indexOfWidth][indexOfHeight] = DEAD;
     }
 }
